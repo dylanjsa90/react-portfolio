@@ -36,7 +36,7 @@ export const skills = {
     },
     {
       label: 'DevOps & Tools',
-      skills: ['Docker', 'Git', 'GitHub Actions', 'Linux', 'Vite', 'npm'],
+      skills: ['Docker', 'Git', 'GitHub Actions', 'Linux', 'Vite', 'npm', 'Bash'],
     },
   ],
 }
@@ -65,7 +65,7 @@ export const projects = {
       title: 'Classic Snake',
       description:
         'Add your own projects here by editing src/data/portfolio.js. Each entry supports a title, description, tags, and optional live/repo links.',
-      tags: ['Coming Soon'],
+      tags: ['React.js', 'Games'],
       repoUrl: null,
       liveUrl: null,
       imageUrl: null,
@@ -102,7 +102,7 @@ export const experience = {
       period: '2019 - 2022',
       bullets: [
         'Developed React frontends consuming internal APIs',
-        'Collaborated with management to implement new core features.',
+        'Collaborated with management and design to implement new core features.',
         'Wrote unit and integration tests with high coverage',
       ],
     },
@@ -115,7 +115,6 @@ export const experience = {
         'Contributed to the backend REST APIs Node.js/express',
         'Helped design database schemas (Mongoose.js) for the MongoDB database',
         'Collaborated with design team on component library',
-        'Wrote unit and integration tests with high coverage',
       ],
     },
   ],
