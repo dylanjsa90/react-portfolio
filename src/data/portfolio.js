@@ -48,7 +48,7 @@ export const projects = {
       description:
         'A RESTful backend service for game-related data with user authentication, PostgreSQL persistence, and Redis caching. Built with FastAPI and SQLAlchemy.',
       tags: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'JWT'],
-      repoUrl: 'https://github.com/dylanjsanders1',
+      repoUrl: 'https://github.com/dylanjsa90',
       liveUrl: null,
       imageUrl: null,
     },
@@ -57,17 +57,17 @@ export const projects = {
       description:
         'This portfolio — a single-page React app with smooth-scroll navigation, dark mode, and fully static content. Built with Vite and Tailwind CSS.',
       tags: ['React', 'Vite', 'Tailwind CSS'],
-      repoUrl: 'https://github.com/dylanjsanders1',
+      repoUrl: 'https://github.com/dylanjsa90',
       liveUrl: null,
       imageUrl: null,
     },
     {
       title: 'Classic Snake',
       description:
-        'Add your own projects here by editing src/data/portfolio.js. Each entry supports a title, description, tags, and optional live/repo links.',
-      tags: ['React.js', 'Games'],
-      repoUrl: null,
-      liveUrl: null,
+        'Try to earn a high score with your 5 daily chances of the classic snake game',
+      tags: ['React.js', 'Games', '5 chances per day'],
+      repoUrl: "https://github.com/dylanjsa90/snake-game",
+      liveUrl: "https://monumental-chaja-a9b3e1.netlify.app/",
       imageUrl: null,
     },
   ],
