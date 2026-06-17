@@ -124,7 +124,7 @@ export const contact = {
   email: 'dylanjsanders1@gmail.com',
   formEnabled: false,
   socials: [
-    { platform: 'GitHub', url: 'https://github.com/dylanjsanders1' },
+    { platform: 'GitHub', url: 'https://github.com/dylanjsa90' },
     { platform: 'LinkedIn', url: 'https://linkedin.com/in/dylanjsanders' },
     { platform: 'Email', url: 'mailto:dylanjsanders1@gmail.com' },
   ],
