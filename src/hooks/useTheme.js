@@ -1,11 +1,25 @@
 import { useState, useEffect } from 'react'
 
+// Must be safe under renderToString (no window/localStorage in Node).
+const getPreferredTheme = () => {
+  if (typeof window === 'undefined') return 'light'
+  const stored = localStorage.getItem('theme')
+  if (stored) return stored
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+}
+
 export function useTheme() {
-  const [theme, setTheme] = useState(() => {
-    const stored = localStorage.getItem('theme')
-    if (stored) return stored
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  })
+  // Server and first client render must agree, so start at 'light' and
+  // apply the real preference after mount. The inline script in index.html
+  // sets the .dark class on <html> before first paint, so there's no flash.
+  const [theme, setTheme] = useState('light')
+
+  useEffect(() => {
+    // Two-pass hydration: the stored preference can only be read client-side,
+    // and applying it before hydration completes would mismatch the server HTML.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTheme(getPreferredTheme())
+  }, [])
 
   useEffect(() => {
     const root = document.documentElement

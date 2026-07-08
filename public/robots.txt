@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dylanjs-react-portfolio.pages.dev/sitemap.xml
