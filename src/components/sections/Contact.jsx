@@ -18,7 +18,7 @@ const platformIcons = {
   ),
 }
 
-export default function Contact({ email, socials, formEnabled }) {
+export default function Contact({ email, socials }) {
   return (
     <SectionWrapper id="contact" title="Contact" className="bg-slate-50 dark:bg-slate-800/30">
       <div className="max-w-xl mx-auto text-center">

@@ -48,7 +48,7 @@ export const projects = {
       description:
         'A RESTful backend service for game-related data with user authentication, PostgreSQL persistence, and Redis caching. Built with FastAPI and SQLAlchemy.',
       tags: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'JWT'],
-      repoUrl: 'https://github.com/dylanjsa90',
+      repoUrl: 'https://github.com/dylanjsa90/latterboard',
       liveUrl: null,
       imageUrl: null,
     },
@@ -57,16 +57,16 @@ export const projects = {
       description:
         'This portfolio — a single-page React app with smooth-scroll navigation, dark mode, and fully static content. Built with Vite and Tailwind CSS.',
       tags: ['React', 'Vite', 'Tailwind CSS'],
-      repoUrl: 'https://github.com/dylanjsa90',
+      repoUrl: 'https://github.com/dylanjsa90/react-portfolio',
       liveUrl: null,
       imageUrl: null,
     },
     {
       title: 'Classic Snake',
       description:
-        'Try to earn a high score with your 5 daily chances of the classic snake game',
-      tags: ['React.js', 'Games', '5 chances per day'],
-      repoUrl: "https://github.com/dylanjsa90/snake-game",
+        'The classic snake game with a daily-challenge twist: you get 5 chances per day to set a high score.',
+      tags: ['React.js', 'TypeScript', 'Games'],
+      repoUrl: 'https://github.com/dylanjsa90/retro-snake',
       liveUrl: "https://monumental-chaja-a9b3e1.netlify.app/",
       imageUrl: null,
     },
@@ -93,7 +93,7 @@ export const experience = {
       bullets: [
         'Built and maintained REST APIs serving production traffic',
         'Optimized web app for SEO to boost organic traffic',
-        'Helped monetize web traffic with programatic ad serving',
+        'Helped monetize web traffic with programmatic ad serving',
       ],
     },
     {
@@ -122,7 +122,6 @@ export const experience = {
 
 export const contact = {
   email: 'dylanjsanders1@gmail.com',
-  formEnabled: false,
   socials: [
     { platform: 'GitHub', url: 'https://github.com/dylanjsa90' },
     { platform: 'LinkedIn', url: 'https://linkedin.com/in/dylanjsanders' },

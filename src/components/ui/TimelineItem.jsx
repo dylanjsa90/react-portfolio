@@ -5,7 +5,7 @@ export default function TimelineItem({ role, company, period, bullets, isLast })
         <div className="w-3 h-3 rounded-full bg-primary-500 mt-1.5 shrink-0" />
         {!isLast && <div className="w-0.5 flex-1 bg-slate-200 dark:bg-slate-700 mt-1" />}
       </div>
-      <div className={`pb-10 ${isLast ? '' : ''}`}>
+      <div className="pb-10">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
           <div>
             <span className="font-semibold text-slate-900 dark:text-slate-100">{role}</span>
