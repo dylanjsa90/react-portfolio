@@ -25,7 +25,7 @@ describe('Navbar mobile menu', () => {
     await user.click(button)
     expect(screen.getByRole('button', { name: /open menu/i })).toHaveAttribute(
       'aria-expanded',
-      'false'
+      'false',
     )
     expect(document.getElementById('mobile-menu')).toHaveClass('hidden')
   })
@@ -40,7 +40,7 @@ describe('Navbar mobile menu', () => {
 
     expect(screen.getByRole('button', { name: /open menu/i })).toHaveAttribute(
       'aria-expanded',
-      'false'
+      'false',
     )
     expect(mobileMenu).toHaveClass('hidden')
   })

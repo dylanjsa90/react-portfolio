@@ -6,7 +6,7 @@ export default {
     extend: {
       colors: {
         primary: {
-          50:  '#f0f9ff',
+          50: '#f0f9ff',
           100: '#e0f2fe',
           400: '#38bdf8',
           500: '#0ea5e9',
@@ -22,4 +22,3 @@ export default {
   },
   plugins: [],
 }
-

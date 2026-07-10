@@ -67,7 +67,7 @@ export const projects = {
         'The classic snake game with a daily-challenge twist: you get 5 chances per day to set a high score.',
       tags: ['React.js', 'TypeScript', 'Games'],
       repoUrl: 'https://github.com/dylanjsa90/retro-snake',
-      liveUrl: "https://monumental-chaja-a9b3e1.netlify.app/",
+      liveUrl: 'https://monumental-chaja-a9b3e1.netlify.app/',
       imageUrl: null,
     },
   ],

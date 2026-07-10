@@ -16,9 +16,7 @@ describe('App', () => {
   it('renders every section heading', () => {
     render(<App />)
     for (const heading of ['about', 'skills', 'projects', 'experience', 'contact']) {
-      expect(
-        screen.getByRole('heading', { name: new RegExp(heading, 'i') })
-      ).toBeInTheDocument()
+      expect(screen.getByRole('heading', { name: new RegExp(heading, 'i') })).toBeInTheDocument()
     }
   })
 

@@ -42,7 +42,9 @@ All copy lives in [`src/data/portfolio.js`](src/data/portfolio.js) — hero, abo
 To add a profile photo, drop an image into `public/` and set `hero.avatarUrl` (e.g. `'/avatar.jpg'`); when it's `null`, the hero falls back to an initial-letter badge.
 
 ## Structure
+
 e
+
 ```
 src/
   components/

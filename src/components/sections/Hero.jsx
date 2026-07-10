@@ -9,9 +9,7 @@ export default function Hero({ name, tagline, cta, avatarUrl }) {
           <h1 className="text-5xl sm:text-6xl font-bold text-slate-900 dark:text-slate-100 tracking-tight mb-4">
             {name}
           </h1>
-          <p className="text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-lg">
-            {tagline}
-          </p>
+          <p className="text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-lg">{tagline}</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
             <a
               href={cta.href}

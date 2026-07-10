@@ -31,9 +31,7 @@ describe('ThemeToggle', () => {
     localStorage.setItem('theme', 'dark')
     render(<ThemeToggle />)
 
-    expect(
-      await screen.findByRole('button', { name: /switch to light mode/i })
-    ).toBeInTheDocument()
+    expect(await screen.findByRole('button', { name: /switch to light mode/i })).toBeInTheDocument()
     expect(document.documentElement).toHaveClass('dark')
   })
 })
