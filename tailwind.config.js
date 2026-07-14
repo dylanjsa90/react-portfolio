@@ -5,13 +5,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          900: '#0c4a6e',
+        ink: '#0B0F14',
+        panel: '#11161D',
+        paper: '#FAF9F6',
+        graphite: '#8C96A3',
+        amber: '#F5A524',
+        ochre: '#9A6700',
+        line: {
+          DEFAULT: '#E7E3DA',
+          dark: '#222B35',
         },
       },
       fontFamily: {

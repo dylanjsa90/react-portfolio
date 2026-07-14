@@ -1,20 +1,20 @@
 import SectionWrapper from '../ui/SectionWrapper'
-import SkillBadge from '../ui/SkillBadge'
 
 export default function Skills({ categories }) {
   return (
     <SectionWrapper id="skills" title="Skills">
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="border-t border-line dark:border-line-dark">
         {categories.map(cat => (
-          <div key={cat.label}>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-4">
-              {cat.label}
+          <div
+            key={cat.label}
+            className="grid sm:grid-cols-[11rem_1fr] gap-x-8 gap-y-1 py-4 border-b border-line dark:border-line-dark"
+          >
+            <h3 className="font-mono text-sm font-medium text-ochre dark:text-amber">
+              {cat.label.toLowerCase()}:
             </h3>
-            <div className="flex flex-wrap gap-2">
-              {cat.skills.map(skill => (
-                <SkillBadge key={skill} label={skill} />
-              ))}
-            </div>
+            <p className="font-mono text-sm text-slate-600 dark:text-slate-400">
+              {cat.skills.join(', ')}
+            </p>
           </div>
         ))}
       </div>

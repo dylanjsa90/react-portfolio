@@ -5,9 +5,9 @@ export const meta = {
 
 export const hero = {
   name: 'Dylan Sanders',
-  tagline: 'Full-Stack Engineer building fast, reliable software.',
+  tagline: 'Building fast, reliable software that actually works.',
   avatarUrl: null,
-  cta: { label: 'View My Work', href: '#projects' },
+  cta: { label: 'View my work', href: '#projects' },
 }
 
 export const about = {

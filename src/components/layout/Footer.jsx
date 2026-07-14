@@ -2,10 +2,10 @@ export default function Footer({ name, socials }) {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-slate-200 dark:border-slate-800 py-8 px-4">
-      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400">
+    <footer className="border-t border-line dark:border-line-dark py-8 px-4">
+      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-slate-500 dark:text-graphite">
         <span suppressHydrationWarning>
-          © {year} {name}
+          © {year} {name.toLowerCase().replace(/\s+/g, '-')} {'// built with react + vite'}
         </span>
         <div className="flex gap-4">
           {socials.map(s => (
@@ -14,9 +14,9 @@ export default function Footer({ name, socials }) {
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+              className="hover:text-ochre dark:hover:text-amber transition-colors"
             >
-              {s.platform}
+              {s.platform.toLowerCase()}
             </a>
           ))}
         </div>
