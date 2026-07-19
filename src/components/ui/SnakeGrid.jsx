@@ -101,7 +101,6 @@ export default function SnakeGrid() {
     }
 
     const onKeyDown = e => {
-      console.log(e.key())
       const d = {
         ArrowUp: { x: 0, y: -1 },
         ArrowDown: { x: 0, y: 1 },
