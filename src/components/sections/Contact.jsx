@@ -25,19 +25,19 @@ const platformIcons = {
 
 export default function Contact({ email, socials }) {
   return (
-    <SectionWrapper id="contact" title="Contact" className="bg-slate-50 dark:bg-slate-800/30">
-      <div className="max-w-xl mx-auto text-center">
+    <SectionWrapper id="contact" title="Contact">
+      <div className="max-w-xl">
         <p className="text-slate-600 dark:text-slate-400 mb-8 text-lg">
-          I&apos;m open to new opportunities. Whether you have a question or just want to say hi —
+          I&apos;m open to new opportunities. Whether you have a question or just want to say hi,
           my inbox is always open.
         </p>
         <a
           href={`mailto:${email}`}
-          className="inline-block px-8 py-3 rounded-lg bg-primary-500 hover:bg-primary-600 text-white font-semibold transition-colors shadow-sm mb-10"
+          className="inline-block px-8 py-3 rounded-sm bg-ochre dark:bg-amber text-paper dark:text-ink font-mono font-semibold text-sm hover:opacity-90 transition-opacity mb-10"
         >
-          Say Hello
+          Say hello
         </a>
-        <div className="flex justify-center gap-6">
+        <div className="flex gap-6">
           {socials.map(s => (
             <a
               key={s.platform}
@@ -45,7 +45,7 @@ export default function Contact({ email, socials }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={s.platform}
-              className="text-slate-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+              className="text-slate-400 dark:text-graphite hover:text-ochre dark:hover:text-amber transition-colors"
             >
               {platformIcons[s.platform] ?? s.platform}
             </a>

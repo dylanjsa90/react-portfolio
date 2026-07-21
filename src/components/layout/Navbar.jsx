@@ -5,13 +5,13 @@ export default function Navbar({ name, navLinks }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
+    <header className="sticky top-0 z-50 bg-paper/80 dark:bg-ink/80 backdrop-blur-sm border-b border-line dark:border-line-dark">
       <nav className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
         <a
           href="#"
-          className="font-semibold text-slate-900 dark:text-slate-100 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+          className="font-mono font-semibold text-slate-900 dark:text-slate-100 hover:text-ochre dark:hover:text-amber transition-colors"
         >
-          {name}
+          {name.toLowerCase().replace(/\s+/g, '-')}
         </a>
         <div className="flex items-center gap-1">
           <ul className="hidden sm:flex items-center gap-1">
@@ -19,9 +19,9 @@ export default function Navbar({ name, navLinks }) {
               <li key={link}>
                 <a
                   href={`#${link}`}
-                  className="px-3 py-1.5 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors capitalize"
+                  className="px-3 py-1.5 font-mono text-sm text-slate-600 dark:text-slate-400 hover:text-ochre dark:hover:text-amber transition-colors"
                 >
-                  {link}
+                  /{link}
                 </a>
               </li>
             ))}
@@ -33,7 +33,7 @@ export default function Navbar({ name, navLinks }) {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            className="sm:hidden p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="sm:hidden p-2 rounded-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-line/50 dark:hover:bg-panel transition-colors"
           >
             {menuOpen ? (
               <svg
@@ -67,16 +67,16 @@ export default function Navbar({ name, navLinks }) {
       </nav>
       <ul
         id="mobile-menu"
-        className={`${menuOpen ? 'block' : 'hidden'} sm:hidden border-t border-slate-200 dark:border-slate-800 px-4 pt-2 pb-3 space-y-1`}
+        className={`${menuOpen ? 'block' : 'hidden'} sm:hidden border-t border-line dark:border-line-dark px-4 pt-2 pb-3 space-y-1`}
       >
         {navLinks.map(link => (
           <li key={link}>
             <a
               href={`#${link}`}
               onClick={() => setMenuOpen(false)}
-              className="block px-3 py-2 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-md transition-colors capitalize"
+              className="block px-3 py-2 font-mono text-sm text-slate-600 dark:text-slate-400 hover:text-ochre dark:hover:text-amber transition-colors"
             >
-              {link}
+              /{link}
             </a>
           </li>
         ))}
