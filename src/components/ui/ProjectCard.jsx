@@ -25,7 +25,6 @@ export default function ProjectCard({ title, description, tags, liveUrl, repoUrl
           <a
             href={liveUrl}
             target="_blank"
-            rel="noopener noreferrer"
             className="font-mono text-sm font-medium text-ochre dark:text-amber hover:underline"
           >
             [live -&gt;]
