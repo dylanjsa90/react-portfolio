@@ -1,6 +1,7 @@
 import SnakeGrid from '../ui/SnakeGrid'
+import type { HeroData } from '../../types'
 
-export default function Hero({ name, tagline, cta }) {
+export default function Hero({ name, tagline, cta }: Pick<HeroData, 'name' | 'tagline' | 'cta'>) {
   return (
     <section className="bg-dotgrid min-h-[calc(100vh-3.5rem)] flex items-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-12 py-20">

@@ -1,7 +1,8 @@
 import SectionWrapper from '../ui/SectionWrapper'
 import ProjectCard from '../ui/ProjectCard'
+import type { ProjectsData } from '../../types'
 
-export default function Projects({ projects }) {
+export default function Projects({ projects }: ProjectsData) {
   return (
     <SectionWrapper id="projects" title="Projects">
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

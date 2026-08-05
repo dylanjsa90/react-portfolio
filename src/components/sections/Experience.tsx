@@ -1,7 +1,8 @@
 import SectionWrapper from '../ui/SectionWrapper'
 import TimelineItem from '../ui/TimelineItem'
+import type { ExperienceData } from '../../types'
 
-export default function Experience({ jobs }) {
+export default function Experience({ jobs }: ExperienceData) {
   return (
     <SectionWrapper id="experience" title="Experience">
       <div className="max-w-2xl">

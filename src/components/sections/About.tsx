@@ -1,6 +1,7 @@
 import SectionWrapper from '../ui/SectionWrapper'
+import type { AboutData } from '../../types'
 
-export default function About({ bio, highlights }) {
+export default function About({ bio, highlights }: AboutData) {
   return (
     <SectionWrapper id="about" title="About Me">
       <div className="grid md:grid-cols-2 gap-10 items-start">

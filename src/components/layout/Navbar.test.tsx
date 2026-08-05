@@ -35,8 +35,8 @@ describe('Navbar mobile menu', () => {
     render(<Navbar {...props} />)
 
     await user.click(screen.getByRole('button', { name: /open menu/i }))
-    const mobileMenu = document.getElementById('mobile-menu')
-    await user.click(mobileMenu.querySelector('a[href="#about"]'))
+    const mobileMenu = document.getElementById('mobile-menu')!
+    await user.click(mobileMenu.querySelector('a[href="#about"]')!)
 
     expect(screen.getByRole('button', { name: /open menu/i })).toHaveAttribute(
       'aria-expanded',

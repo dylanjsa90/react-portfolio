@@ -1,4 +1,11 @@
-export default function Footer({ name, socials }) {
+import type { Social } from '../../types'
+
+interface FooterProps {
+  name: string
+  socials: Social[]
+}
+
+export default function Footer({ name, socials }: FooterProps) {
   const year = new Date().getFullYear()
 
   return (
