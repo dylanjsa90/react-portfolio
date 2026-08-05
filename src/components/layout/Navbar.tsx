@@ -1,7 +1,12 @@
 import { useState } from 'react'
 import ThemeToggle from '../ui/ThemeToggle'
 
-export default function Navbar({ name, navLinks }) {
+interface NavbarProps {
+  name: string
+  navLinks: string[]
+}
+
+export default function Navbar({ name, navLinks }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (

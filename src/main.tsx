@@ -9,9 +9,9 @@ import '@fontsource/jetbrains-mono/500.css'
 import '@fontsource/jetbrains-mono/600.css'
 import '@fontsource/jetbrains-mono/700.css'
 import './index.css'
-import App from './App.jsx'
+import App from './App'
 
-const root = document.getElementById('root')
+const root = document.getElementById('root')!
 const app = (
   <StrictMode>
     <App />

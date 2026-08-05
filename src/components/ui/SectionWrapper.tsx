@@ -1,4 +1,18 @@
-export default function SectionWrapper({ id, title, children, className = '' }) {
+import type { ReactNode } from 'react'
+
+interface SectionWrapperProps {
+  id: string
+  title?: string
+  children: ReactNode
+  className?: string
+}
+
+export default function SectionWrapper({
+  id,
+  title,
+  children,
+  className = '',
+}: SectionWrapperProps) {
   return (
     <section id={id} className={`py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full ${className}`}>
       {title && (

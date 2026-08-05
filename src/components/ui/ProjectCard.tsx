@@ -1,4 +1,14 @@
-export default function ProjectCard({ title, description, tags, liveUrl, repoUrl }) {
+import type { Project } from '../../types'
+
+type ProjectCardProps = Pick<Project, 'title' | 'description' | 'tags' | 'liveUrl' | 'repoUrl'>
+
+export default function ProjectCard({
+  title,
+  description,
+  tags,
+  liveUrl,
+  repoUrl,
+}: ProjectCardProps) {
   return (
     <div className="flex flex-col border border-line dark:border-line-dark p-6 hover:border-ochre dark:hover:border-amber transition-colors">
       <h3 className="font-mono text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
@@ -25,7 +35,6 @@ export default function ProjectCard({ title, description, tags, liveUrl, repoUrl
           <a
             href={liveUrl}
             target="_blank"
-            rel="noopener noreferrer"
             className="font-mono text-sm font-medium text-ochre dark:text-amber hover:underline"
           >
             [live -&gt;]

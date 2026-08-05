@@ -1,6 +1,7 @@
 import SectionWrapper from '../ui/SectionWrapper'
+import type { SkillsData } from '../../types'
 
-export default function Skills({ categories }) {
+export default function Skills({ categories }: SkillsData) {
   return (
     <SectionWrapper id="skills" title="Skills">
       <div className="border-t border-line dark:border-line-dark">

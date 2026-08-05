@@ -1,16 +1,26 @@
-export const meta = {
+import type {
+  NavMeta,
+  HeroData,
+  AboutData,
+  SkillsData,
+  ProjectsData,
+  ExperienceData,
+  ContactData,
+} from '../types'
+
+export const meta: NavMeta = {
   name: 'Dylan Sanders',
   navLinks: ['about', 'skills', 'projects', 'experience', 'contact'],
 }
 
-export const hero = {
+export const hero: HeroData = {
   name: 'Dylan Sanders',
   tagline: 'Building fast, reliable software that actually works.',
   avatarUrl: null,
   cta: { label: 'View my work', href: '#projects' },
 }
 
-export const about = {
+export const about: AboutData = {
   bio: "I'm a full-stack engineer who loves crafting clean APIs and intuitive UIs. I care about code that's easy to read, easy to change, and actually works. When I'm not writing software, you'll find me gaming or tinkering with side projects.",
   highlights: [
     'Full-stack web development (React, Python/FastAPI)',
@@ -20,7 +30,7 @@ export const about = {
   ],
 }
 
-export const skills = {
+export const skills: SkillsData = {
   categories: [
     {
       label: 'Frontend',
@@ -41,7 +51,7 @@ export const skills = {
   ],
 }
 
-export const projects = {
+export const projects: ProjectsData = {
   projects: [
     {
       title: 'Games API',
@@ -73,7 +83,7 @@ export const projects = {
   ],
 }
 
-export const experience = {
+export const experience: ExperienceData = {
   jobs: [
     {
       role: 'Consultant: Software Engineer',
@@ -120,7 +130,7 @@ export const experience = {
   ],
 }
 
-export const contact = {
+export const contact: ContactData = {
   email: 'dylanjsanders1@gmail.com',
   socials: [
     { platform: 'GitHub', url: 'https://github.com/dylanjsa90' },

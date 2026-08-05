@@ -1,16 +1,22 @@
 import { useEffect, useRef, useState } from 'react'
 
+interface Point {
+  x: number
+  y: number
+}
+
 const CELLS = 13
 const CELL = 24
 const SIZE = CELLS * CELL
 const IDLE_LENGTH = 5
 
 export default function SnakeGrid() {
-  const canvasRef = useRef(null)
-  const [score, setScore] = useState(null) // null = idle, number = playing
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [score, setScore] = useState<number | null>(null) // null = idle, number = playing
 
   useEffect(() => {
     const canvas = canvasRef.current
+    if (!canvas) return
     const ctx = canvas.getContext('2d')
     if (!ctx) return // jsdom in tests has no canvas support
     const dpr = window.devicePixelRatio || 1
@@ -19,13 +25,13 @@ export default function SnakeGrid() {
     ctx.scale(dpr, dpr)
 
     // tail first, head last
-    let snake = [
+    let snake: Point[] = [
       { x: 3, y: 6 },
       { x: 4, y: 6 },
       { x: 5, y: 6 },
     ]
-    let dir = { x: 1, y: 0 }
-    let food = { x: 9, y: 6 }
+    let dir: Point = { x: 1, y: 0 }
+    let food: Point = { x: 9, y: 6 }
     let manual = false
 
     const accent = () =>
@@ -42,7 +48,7 @@ export default function SnakeGrid() {
       ctx.globalAlpha = 1
     }
 
-    const onSnake = (x, y) => snake.some(seg => seg.x === x && seg.y === y)
+    const onSnake = (x: number, y: number) => snake.some(seg => seg.x === x && seg.y === y)
 
     const spawnFood = () => {
       do {
@@ -50,7 +56,7 @@ export default function SnakeGrid() {
       } while (onSnake(food.x, food.y))
     }
 
-    const safe = d => {
+    const safe = (d: Point) => {
       const head = snake[snake.length - 1]
       const nx = head.x + d.x
       const ny = head.y + d.y
@@ -91,7 +97,7 @@ export default function SnakeGrid() {
       const head = snake[snake.length - 1]
       snake.push({ x: head.x + dir.x, y: head.y + dir.y })
       if (snake[snake.length - 1].x === food.x && snake[snake.length - 1].y === food.y) {
-        if (manual) setScore(n => n + 1)
+        if (manual) setScore(n => (n ?? 0) + 1)
         else if (snake.length > IDLE_LENGTH) snake.shift()
         spawnFood()
       } else {
@@ -100,13 +106,14 @@ export default function SnakeGrid() {
       draw()
     }
 
-    const onKeyDown = e => {
-      const d = {
+    const onKeyDown = (e: KeyboardEvent) => {
+      const keyMap: Record<string, Point> = {
         ArrowUp: { x: 0, y: -1 },
         ArrowDown: { x: 0, y: 1 },
         ArrowLeft: { x: -1, y: 0 },
         ArrowRight: { x: 1, y: 0 },
-      }[e.key]
+      }
+      const d = keyMap[e.key]
       if (!d) return
       e.preventDefault()
       if (!manual) {

@@ -1,4 +1,16 @@
-export default function TimelineItem({ role, company, period, bullets, isLast }) {
+import type { Job } from '../../types'
+
+interface TimelineItemProps extends Job {
+  isLast: boolean
+}
+
+export default function TimelineItem({
+  role,
+  company,
+  period,
+  bullets,
+  isLast,
+}: TimelineItemProps) {
   return (
     <div className="flex flex-col sm:flex-row gap-2 sm:gap-6">
       <span className="font-mono text-sm text-slate-500 dark:text-graphite sm:w-28 shrink-0 sm:text-right sm:pt-0.5">
