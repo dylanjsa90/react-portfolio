@@ -1,58 +1,61 @@
 # Dylan Sanders — Portfolio
 
-Personal portfolio site: a single-page React app with smooth-scroll section navigation, dark mode, and statically prerendered HTML for SEO.
+Personal portfolio site built with Astro: static HTML with smooth-scroll section navigation, dark mode, and a few small scripts for the interactive parts.
 
-**Live:** https://dylanjs-react-portfolio.pages.dev/
+**Live:** https://dylan-sanders.com/
 
 ## Stack
 
-- [React 19](https://react.dev/) + [Vite 5](https://vitejs.dev/)
-- [Tailwind CSS 3](https://tailwindcss.com/) (`darkMode: 'class'`)
+- [Astro 7](https://astro.build/), static output, no UI framework
+- [Tailwind CSS 3](https://tailwindcss.com/) (`darkMode: 'class'`) via PostCSS
 - Self-hosted fonts via [Fontsource](https://fontsource.org/) (Inter, JetBrains Mono)
-- [Vitest](https://vitest.dev/) + React Testing Library
+- [Vitest](https://vitest.dev/) with Astro's container renderer and jsdom
+- Sitemap via `@astrojs/sitemap`
 - Deployed on Cloudflare Pages
+
+Requires Node 22.23.4 or newer (see `.nvmrc`).
 
 ## Scripts
 
-| Command              | What it does                                   |
-| -------------------- | ---------------------------------------------- |
-| `npm run dev`        | Dev server at http://localhost:5173            |
-| `npm run build`      | Production build with prerendering (see below) |
-| `npm run preview`    | Serve the production build locally             |
-| `npm test`           | Run the test suite once                        |
-| `npm run test:watch` | Run tests in watch mode                        |
-| `npm run lint`       | ESLint                                         |
-| `npm run format`     | Prettier over the repo                         |
+| Command              | What it does                                    |
+| -------------------- | ----------------------------------------------- |
+| `npm run dev`        | Dev server at http://localhost:4321             |
+| `npm run build`      | Type check (`astro check`), then build to dist/ |
+| `npm run preview`    | Serve the production build locally              |
+| `npm test`           | Run the test suite once                         |
+| `npm run test:watch` | Run tests in watch mode                         |
+| `npm run typecheck`  | `astro check` only                              |
+| `npm run lint`       | ESLint                                          |
+| `npm run format`     | Prettier over the repo                          |
 
-## How the build works
+## How it works
 
-`npm run build` runs three steps:
+Every page in `src/pages/` is rendered to static HTML at build time and wrapped in `src/layouts/Base.astro`, which holds the `<head>` (meta tags, analytics, structured data) and the navbar and footer. Pass `title` and `description` to set each page's tags; the canonical URL comes from the page path and `site` in `astro.config.mjs`.
 
-1. `vite build` — client bundle into `dist/`
-2. `vite build --ssr src/entry-server.jsx` — servr-render bundle into `dist-ssr/`
-3. `node scripts/prerender.mjs` — renders `<App />` to HTML, injects it into the
-   `<!--app-html-->` placeholder in `dist/index.html`, and deletes `dist-ssr/`
+The only client-side JavaScript lives in `src/scripts/`:
 
-In production `src/main.jsx` hydrates the prerendered markup (`hydrateRoot`); in dev it mounts normally (`createRoot`). Components must render identically on server and client — no browser APIs during render.
+- `theme.ts`: theme toggle. An inline script in `Base.astro` sets the `dark` class before first paint; the choice is only stored in `localStorage` once the visitor clicks the toggle.
+- `menu.ts`: mobile nav menu.
+- `snake.ts`: the snake animation and game in the hero.
+
+Navbar links are root-relative (`/#about`) so they work from any page.
 
 ## Editing content
 
-All copy lives in [`src/data/portfolio.js`](src/data/portfolio.js) — hero, about, skills, projects, experience, and contact info. Components just render what's there.
-
-To add a profile photo, drop an image into `public/` and set `hero.avatarUrl` (e.g. `'/avatar.jpg'`); when it's `null`, the hero falls back to an initial-letter badge.
+All copy lives in [`src/data/portfolio.ts`](src/data/portfolio.ts): hero, about, skills, projects, experience, and contact info. Types are in [`src/types.ts`](src/types.ts). Components just render what's there.
 
 ## Structure
-
-e
 
 ```
 src/
   components/
     layout/     Navbar, Footer
     sections/   Hero, About, Skills, Projects, Experience, Contact
-    ui/         SectionWrapper, ProjectCard, SkillBadge, TimelineItem, ThemeToggle
-  data/         portfolio.js (all site content)
-  hooks/        useTheme.js
-  utils/        analytics.js
-  test/         setup.js
+    ui/         SectionWrapper, ProjectCard, TimelineItem, ThemeToggle, SnakeGrid
+  data/         portfolio.ts (all site content)
+  layouts/      Base.astro
+  pages/        index.astro
+  scripts/      theme.ts, menu.ts, snake.ts (+ tests)
+  styles/       global.css
+  test/         home.test.ts
 ```

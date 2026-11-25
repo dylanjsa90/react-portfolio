@@ -65,8 +65,8 @@ export const projects: ProjectsData = {
     {
       title: 'Portfolio Site',
       description:
-        'This portfolio — a single-page React app with smooth-scroll navigation, dark mode, and fully static content. Built with Vite and Tailwind CSS.',
-      tags: ['React', 'Vite', 'Tailwind CSS'],
+        'This portfolio: a static Astro site with smooth-scroll navigation, dark mode, and a playable snake game, shipping almost no JavaScript. Styled with Tailwind CSS.',
+      tags: ['Astro', 'TypeScript', 'Tailwind CSS'],
       repoUrl: 'https://github.com/dylanjsa90/react-portfolio',
       liveUrl: null,
       imageUrl: null,

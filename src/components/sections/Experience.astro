@@ -1,0 +1,17 @@
+---
+import SectionWrapper from '../ui/SectionWrapper.astro'
+import TimelineItem from '../ui/TimelineItem.astro'
+import type { ExperienceData } from '../../types'
+
+type Props = ExperienceData
+
+const { jobs } = Astro.props
+---
+
+<SectionWrapper id="experience" title="Experience">
+  <div class="max-w-2xl">
+    {jobs.map((job, i) => (
+      <TimelineItem {...job} isLast={i === jobs.length - 1} />
+    ))}
+  </div>
+</SectionWrapper>

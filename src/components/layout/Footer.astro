@@ -1,0 +1,29 @@
+---
+import type { Social } from '../../types'
+
+interface Props {
+  name: string
+  socials: Social[]
+}
+
+const { name, socials } = Astro.props
+const year = new Date().getFullYear()
+---
+
+<footer class="border-t border-line dark:border-line-dark py-8 px-4">
+  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-slate-500 dark:text-graphite">
+    <span>{`© ${year} ${name.toLowerCase().replace(/\s+/g, '-')} // built with astro`}</span>
+    <div class="flex gap-4">
+      {socials.map(s => (
+        <a
+          href={s.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-ochre dark:hover:text-amber transition-colors"
+        >
+          {s.platform.toLowerCase()}
+        </a>
+      ))}
+    </div>
+  </div>
+</footer>

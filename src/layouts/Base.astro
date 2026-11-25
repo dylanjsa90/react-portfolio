@@ -1,0 +1,131 @@
+---
+import '@fontsource/inter/400.css'
+import '@fontsource/inter/500.css'
+import '@fontsource/inter/600.css'
+import '@fontsource/inter/700.css'
+import '@fontsource/jetbrains-mono/400.css'
+import '@fontsource/jetbrains-mono/500.css'
+import '@fontsource/jetbrains-mono/600.css'
+import '@fontsource/jetbrains-mono/700.css'
+import '../styles/global.css'
+import Navbar from '../components/layout/Navbar.astro'
+import Footer from '../components/layout/Footer.astro'
+import { meta, contact } from '../data/portfolio'
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+const canonical = new URL(Astro.url.pathname, Astro.site).href
+const ogImage = new URL('/og-image.png', Astro.site).href
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline>
+      try {
+        const t = localStorage.getItem('theme')
+        if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+        }
+      } catch {
+        // storage blocked: stay in light mode
+      }
+    </script>
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Dylan Sanders" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF9F6" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0F14" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Dylan Sanders — Portfolio" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://dylan-sanders.com/#person",
+            "name": "Dylan Sanders",
+            "jobTitle": "Full-Stack Software Engineer",
+            "url": "https://dylan-sanders.com/",
+            "email": "mailto:dylanjsanders1@gmail.com",
+            "sameAs": ["https://github.com/dylanjsa90", "https://linkedin.com/in/dylanjsanders"],
+            "knowsAbout": [
+              "React",
+              "JavaScript",
+              "TypeScript",
+              "Python",
+              "FastAPI",
+              "Node.js",
+              "PostgreSQL",
+              "Redis",
+              "MongoDB",
+              "REST APIs",
+              "Docker",
+              "CI/CD"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://dylan-sanders.com/#website",
+            "url": "https://dylan-sanders.com/",
+            "name": "Dylan Sanders — Portfolio",
+            "publisher": { "@id": "https://dylan-sanders.com/#person" }
+          }
+        ]
+      }
+    </script>
+
+    <script
+      is:inline
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="a9720dc5-3476-44d6-a0ba-1ca7a7b940a5"
+    ></script>
+
+    <!-- Google Analytics -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-Q2W6S8D277"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        // gtag.js requires the Arguments object itself; a rest-parameter array is ignored.
+        // eslint-disable-next-line prefer-rest-params
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-Q2W6S8D277')
+    </script>
+  </head>
+  <body>
+    <div class="min-h-screen flex flex-col">
+      <Navbar name={meta.name} navLinks={meta.navLinks} />
+      <main class="flex-1">
+        <slot />
+      </main>
+      <Footer name={meta.name} socials={contact.socials} />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+---
+import { SIZE } from '../../scripts/snake'
+---
+
+<div class="shrink-0">
+  <canvas
+    id="snake"
+    tabindex="0"
+    aria-label="Snake game. Focus and use the arrow keys to play."
+    style={`width: ${SIZE}px; height: ${SIZE}px`}
+    class="block"
+  ></canvas>
+  <p
+    id="snake-score"
+    class="hidden md:block font-mono text-xs text-slate-400 dark:text-graphite mt-2 text-right"
+  >
+    {'// arrow keys to play'}
+  </p>
+</div>
+
+<script>
+  import { initSnake } from '../../scripts/snake'
+  initSnake()
+</script>

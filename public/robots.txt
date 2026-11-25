@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dylanjs-react-portfolio.pages.dev/sitemap.xml
+Sitemap: https://dylan-sanders.com/sitemap-index.xml

@@ -1,0 +1,17 @@
+---
+import SectionWrapper from '../ui/SectionWrapper.astro'
+import ProjectCard from '../ui/ProjectCard.astro'
+import type { ProjectsData } from '../../types'
+
+type Props = ProjectsData
+
+const { projects } = Astro.props
+---
+
+<SectionWrapper id="projects" title="Projects">
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {projects.map(project => (
+      <ProjectCard {...project} />
+    ))}
+  </div>
+</SectionWrapper>

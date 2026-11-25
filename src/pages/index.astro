@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro'
+import Hero from '../components/sections/Hero.astro'
+import About from '../components/sections/About.astro'
+import Skills from '../components/sections/Skills.astro'
+import Projects from '../components/sections/Projects.astro'
+import Experience from '../components/sections/Experience.astro'
+import Contact from '../components/sections/Contact.astro'
+import { hero, about, skills, projects, experience, contact } from '../data/portfolio'
+---
+
+<Base
+  title="Dylan Sanders — Full-Stack Software Engineer"
+  description="Portfolio of Dylan Sanders, a full-stack software engineer building fast, reliable web applications with React, Python/FastAPI, Node.js, and PostgreSQL. View projects, experience, and contact info."
+>
+  <Hero {...hero} />
+  <About {...about} />
+  <Skills {...skills} />
+  <Projects {...projects} />
+  <Experience {...experience} />
+  <Contact {...contact} />
+</Base>
