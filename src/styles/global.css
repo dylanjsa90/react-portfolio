@@ -55,3 +55,10 @@
     transform: translateY(8px);
   }
 }
+
+/* Code blocks: Shiki emits light colours inline and dark ones as variables (astro.config.mjs). */
+.dark .astro-code,
+.dark .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}

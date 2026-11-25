@@ -44,6 +44,21 @@ Navbar links are root-relative (`/#about`) so they work from any page.
 
 All copy lives in [`src/data/portfolio.ts`](src/data/portfolio.ts): hero, about, skills, projects, experience, and contact info. Types are in [`src/types.ts`](src/types.ts). Components just render what's there.
 
+## Writing blog posts
+
+Add a Markdown file to `src/content/blog/`. The file name becomes the URL (`my-post.md` is served at `/blog/my-post/`). Frontmatter:
+
+```md
+---
+title: My post
+description: One or two sentences, used in the post list, search results and link previews.
+date: 2026-11-24
+draft: true # optional; drafts show in `npm run dev` only
+---
+```
+
+The schema is in `src/content.config.ts`, and `npm run build` fails if a post doesn't match it. Published posts appear at `/blog/`, in `/rss.xml` and in the sitemap. Code blocks are highlighted with Shiki in light and dark themes.
+
 ## Structure
 
 ```
@@ -52,10 +67,11 @@ src/
     layout/     Navbar, Footer
     sections/   Hero, About, Skills, Projects, Experience, Contact
     ui/         SectionWrapper, ProjectCard, TimelineItem, ThemeToggle, SnakeGrid
-  data/         portfolio.ts (all site content)
+  data/         portfolio.ts (all site content), blog.ts (post helpers)
   layouts/      Base.astro
-  pages/        index.astro
+  content/      blog/ (Markdown posts)
+  pages/        index.astro, blog/index.astro, blog/[slug].astro, rss.xml.ts
   scripts/      theme.ts, menu.ts, snake.ts (+ tests)
   styles/       global.css
-  test/         home.test.ts
+  test/         home.test.ts, blog.test.ts (+ fixtures)
 ```

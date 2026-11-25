@@ -15,9 +15,11 @@ import { meta, contact } from '../data/portfolio'
 interface Props {
   title: string
   description: string
+  ogType?: 'website' | 'article'
 }
 
-const { title, description } = Astro.props
+// Pages can add extra head tags with slot="head" (e.g. structured data for a post).
+const { title, description, ogType = 'website' } = Astro.props
 const canonical = new URL(Astro.url.pathname, Astro.site).href
 const ogImage = new URL('/og-image.png', Astro.site).href
 ---
@@ -44,10 +46,11 @@ const ogImage = new URL('/og-image.png', Astro.site).href
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Dylan Sanders: Blog" href="/rss.xml" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF9F6" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0F14" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="Dylan Sanders — Portfolio" />
     <meta property="og:title" content={title} />
@@ -60,6 +63,7 @@ const ogImage = new URL('/og-image.png', Astro.site).href
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <slot name="head" />
 
     <script type="application/ld+json" is:inline>
       {

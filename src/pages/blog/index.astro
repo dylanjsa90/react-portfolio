@@ -1,0 +1,47 @@
+---
+import Base from '../../layouts/Base.astro'
+import SectionWrapper from '../../components/ui/SectionWrapper.astro'
+import { getPosts, formatDate } from '../../data/blog'
+
+const posts = await getPosts()
+---
+
+<Base
+  title="Blog | Dylan Sanders"
+  description="Writing by Dylan Sanders on full-stack software engineering: React, Python, APIs, databases and the craft of shipping reliable software."
+>
+  <SectionWrapper id="blog" title="Blog">
+    {posts.length === 0 ? (
+      <p class="font-mono text-sm text-slate-500 dark:text-graphite">{'// no posts yet'}</p>
+    ) : (
+      <ul class="border-t border-line dark:border-line-dark">
+        {posts.map(post => (
+          <li class="border-b border-line dark:border-line-dark">
+            <a
+              href={`/blog/${post.id}/`}
+              class="group grid sm:grid-cols-[8rem_1fr] gap-x-8 gap-y-1 py-5"
+            >
+              <time
+                datetime={post.data.date.toISOString()}
+                class="font-mono text-sm text-slate-500 dark:text-graphite sm:pt-0.5"
+              >
+                {formatDate(post.data.date)}
+              </time>
+              <div>
+                <h3 class="font-mono font-semibold text-slate-900 dark:text-slate-100 group-hover:text-ochre dark:group-hover:text-amber transition-colors">
+                  {post.data.title}
+                  {post.data.draft && (
+                    <span class="ml-2 font-normal text-xs text-ochre dark:text-amber">[draft]</span>
+                  )}
+                </h3>
+                <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">
+                  {post.data.description}
+                </p>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </SectionWrapper>
+</Base>
