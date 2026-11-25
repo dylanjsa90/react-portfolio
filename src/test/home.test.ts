@@ -1,19 +1,46 @@
 import { experimental_AstroContainer as AstroContainer } from 'astro/container'
 import { JSDOM } from 'jsdom'
-import { beforeAll, describe, expect, it } from 'vitest'
+import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import Home from '../pages/index.astro'
 import { meta } from '../data/portfolio'
 
-let doc: Document
-
-beforeAll(async () => {
+async function renderHome() {
   const container = await AstroContainer.create({
     astroConfig: { site: 'https://dylan-sanders.com' },
   })
   const html = await container.renderToString(Home, {
     request: new Request('https://dylan-sanders.com/'),
   })
-  doc = new JSDOM(html).window.document
+  return new JSDOM(html).window.document
+}
+
+let doc: Document
+
+beforeAll(async () => {
+  doc = await renderHome()
+})
+
+describe('analytics', () => {
+  const analyticsScripts = (d: Document) =>
+    [...d.querySelectorAll('script')].filter(s => /umami|googletagmanager|gtag\(/.test(s.outerHTML))
+
+  afterEach(() => {
+    vi.unstubAllEnvs()
+  })
+
+  it('is left out in dev, so local work does not send hits', () => {
+    expect(analyticsScripts(doc)).toHaveLength(0)
+  })
+
+  it('loads Umami and Google Analytics in production builds', async () => {
+    vi.stubEnv('PROD', true)
+    const scripts = analyticsScripts(await renderHome())
+    expect(scripts.map(s => s.getAttribute('src'))).toEqual([
+      'https://cloud.umami.is/script.js',
+      'https://www.googletagmanager.com/gtag/js?id=G-Q2W6S8D277',
+      null,
+    ])
+  })
 })
 
 describe('home page', () => {
